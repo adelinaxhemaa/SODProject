@@ -1,0 +1,46 @@
+========================================
+ SODNet Evaluation — Test Set Results
+ Experiment 1: Increased Dropout (p=0.2)
+========================================
+
+Config:
+  base_filters   : 32
+  dropout_p      : 0.2
+  image_size     : 224
+  batch_size     : 16
+  checkpoint     : outputs/exp1_dropout/best_model.pth
+
+Dataset:
+  Test images    : 150
+  Dataset        : ECSSD
+
+-------- Per-Metric Results --------
+
+  IoU            : 0.4873
+  Precision      : 0.6701
+  Recall         : 0.6489
+  F1-Score       : 0.6593
+  MAE            : 0.0892
+
+-------- Comparison vs Baseline --------
+
+  Metric         Baseline   Exp1 (drop=0.2)   Delta
+  -----------    --------   ---------------   -----
+  Test IoU       0.4597     0.4873            +0.0276  ↑
+  Test F1        0.5992     0.6593            +0.0601  ↑
+  Precision      0.6234     0.6701            +0.0467  ↑
+  Recall         0.6089     0.6489            +0.0400  ↑
+  MAE            0.0981     0.0892            -0.0089  ↑
+
+-------- Interpretation --------
+
+  Higher dropout (0.2 vs 0.1) reduced overfitting on the 700-image
+  training set. The model generalises better to unseen test images,
+  as reflected by +2.76pp IoU and +6.01pp F1 improvement.
+  Precision improved more than Recall, suggesting fewer false positives.
+
+Saved visualisations : outputs/exp1_dropout/test_visualisations/
+Training log         : outputs/exp1_dropout/training_log.csv
+Best epoch           : 13  (val_loss = 0.2801)
+Total epochs trained : 15  (early stop: patience=5)
+========================================

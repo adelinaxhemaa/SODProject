@@ -1,0 +1,7 @@
+TEST SET EVALUATION RESULTS
+========================================
+IOU         : 0.4597
+PRECISION   : 0.6034
+RECALL      : 0.7360
+F1          : 0.5992
+MAE         : 0.2407

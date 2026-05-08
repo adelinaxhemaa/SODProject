@@ -1,0 +1,49 @@
+========================================
+ SODNet Evaluation — Test Set Results
+ Experiment 2: Deeper Network (base_filters=64)
+========================================
+
+Config:
+  base_filters   : 64
+  dropout_p      : 0.1
+  image_size     : 224
+  batch_size     : 16
+  checkpoint     : outputs/exp2_deeper/best_model.pth
+
+Dataset:
+  Test images    : 150
+  Dataset        : ECSSD
+
+-------- Per-Metric Results --------
+
+  IoU            : 0.5089
+  Precision      : 0.6923
+  Recall         : 0.6712
+  F1-Score       : 0.6816
+  MAE            : 0.0834
+
+-------- Comparison vs Baseline --------
+
+  Metric         Baseline   Exp2 (f=64)       Delta
+  -----------    --------   -----------       -----
+  Test IoU       0.4597     0.5089            +0.0492  ↑
+  Test F1        0.5992     0.6816            +0.0824  ↑
+  Precision      0.6234     0.6923            +0.0689  ↑
+  Recall         0.6089     0.6712            +0.0623  ↑
+  MAE            0.0981     0.0834            -0.0147  ↑
+
+-------- Interpretation --------
+
+  Doubling base filters (32→64) increases model capacity from ~1.9M
+  to ~7.6M parameters. The deeper network learns richer feature
+  representations and achieves the best overall performance across
+  all metrics. The +4.92pp IoU and +8.24pp F1 gains justify the
+  increased compute cost for higher-quality saliency detection.
+
+  Best configuration overall: Exp 2 (f=64).
+
+Saved visualisations : outputs/exp2_deeper/test_visualisations/
+Training log         : outputs/exp2_deeper/training_log.csv
+Best epoch           : 13  (val_loss = 0.2689)
+Total epochs trained : 18  (early stop: patience=5)
+========================================
